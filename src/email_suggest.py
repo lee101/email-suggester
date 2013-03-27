@@ -53,7 +53,8 @@ class Suggester(object):
         return ' '.join(email).replace(" ,", ",")
 
     def strip_punctuation(self,s):
-        return  s.translate(string.maketrans("",""), string.punctuation).replace("\n","")
+        return re.sub('[^A-Za-z0-9]+', '', s)
+        #return  s.translate(string.maketrans("",""), string.punctuation).replace("\n","")
     def argmax(self, a, key=lambda x: x):
         maxIndex = 0
         maxVal = key(a[maxIndex])
